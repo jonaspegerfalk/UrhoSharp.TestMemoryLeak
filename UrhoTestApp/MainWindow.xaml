@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Click="Button1_Click">
+                Page 1
+            </Button>
+            <Button Click="Button2_Click">
+                Page 2
+            </Button>
+
+        </StackPanel>
+
+        <Canvas x:Name="Grid1" Grid.Row="1"></Canvas>
         
     </Grid>
 </Window>

@@ -16,24 +16,22 @@ using System.Windows.Shapes;
 namespace UrhoTestApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControl2.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControl2 : UserControl
     {
-        public MainWindow()
+        public UserControl2()
         {
             InitializeComponent();
+            this.Unloaded += UserControl2_Unloaded;
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private void UserControl2_Unloaded(object sender, RoutedEventArgs e)
         {
-            Grid1.Children.Clear();
-            Grid1.Children.Add(new UserControl1());
-        }
-        private void Button2_Click(object sender, RoutedEventArgs e)
-        {
-            Grid1.Children.Clear();
-            Grid1.Children.Add(new UserControl2());
+            // This row does not make any difference for the UrhoSurface, it will still 
+            // be kept in memory. (But the user control will be garbage collected...)
+            Grid1.Children.Remove(Urho1);
+            this.Unloaded -= UserControl2_Unloaded;
         }
     }
 }
